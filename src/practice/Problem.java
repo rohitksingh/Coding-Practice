@@ -6,19 +6,18 @@ package practice;
  * @author rohit_pc
  * TODO
  * 1) Learn char value how it differs from low case to high case
- * 
+ * 2) Find the output loop and stuff from a code snippet
  * 
  */
 public class Problem {
 	
 	public static void main(String[] args) {
-		System.out.println("Its working");
 		
 		Problem p1 = new Problem();
 //		p1.sortNumber(new int[] {2,4,1,-5,3,77,98});
 //		p1.sortChar("rohitsingh");
 		char[] arr = "Rohit".toCharArray();
-		p1.reverseRecursive(arr, 0, arr.length-1);
+		p1.reverseRecursive(arr);
 		
 	}
 	
@@ -87,6 +86,28 @@ public class Problem {
 		reverseRecursive(arr,start+1,end-1);
 		
 		
+	}
+	
+	
+	public void reverseRecursive(char[] arr) {
+		
+		swap(arr, 0, arr.length-1);
+		
+		System.out.println(new String(arr));
+	
+	}
+	
+	public void swap(char[] arr, int low, int high) {
+		
+		if(low>high) {
+			return;
+		}
+		
+		char temp = arr[low];
+		arr[low] = arr[high];
+		arr[high] = temp;
+	
+		swap(arr, ++low, --high);
 	}
 	
 	
