@@ -1,5 +1,6 @@
 package practice;
 
+import java.util.HashMap;
 
 /**
  * 
@@ -11,6 +12,8 @@ package practice;
  */
 public class Problem {
 	
+	int counter=0;
+	
 	public static void main(String[] args) {
 		
 		Problem p1 = new Problem();
@@ -19,7 +22,14 @@ public class Problem {
 //		char[] arr = "Rohit".toCharArray();
 //		p1.reverseRecursive(arr);
 //		p1.reverse("rohit");
-		p1.iterateBack("RohitSingh");
+//		p1.iterateBack("RohitSingh");
+//		p1.fibonaci(10);
+//		System.out.println("\n"+p1.fibonaciNTerm(4));
+//		System.out.println("\n"+p1.fibDyn(100));
+//		System.out.println(p1.isAnagram("rohit", "Tihor"));
+		
+		System.out.println(p1.sortSentence("my name is skrillex"));
+		
 		
 	}
 	
@@ -135,7 +145,142 @@ public class Problem {
 	}
 	
 	
-
+	public void fibonaci(int terms) {
+		
+		int a = 0;
+		int b =1;
+		
+		if(terms ==0) {
+			System.out.println(a+" ");
+		}else if(terms==1){
+			System.out.println(b+" ");
+		}
+		if(terms>=2){
+			System.out.print(a+" ");
+			System.out.print(b+" ");
+			for(int i=0;i<terms-2;i++) {
+				System.out.print(a+b+" ");
+				int c = a+b;
+				a=b;
+				b=c;
+			}
+		}
+		
+	}
+	
+	public int fibonaciNTerm(int terms) {
+		if(terms==1)
+			return 0;
+		else if(terms ==2)
+			return 1;
+		else {
+			int a = 0, b=1;
+			int c=0;
+			for(int i=0;i<terms-2;i++) {
+				c = a+b;
+				a=b;
+				b=c;
+			}
+			
+			return c;
+		}
+	}
+	
+	public int fib(int n) {
+		
+		System.out.println(++counter);
+		
+		if(n==0)
+			return 0;
+		else if(n==1)
+			return 1;
+		
+		return fib(n-1)+fib(n-2);
+		
+		
+	}
+	
+	public int fibDyn(int n) {
+		
+		HashMap<Integer,Integer> map = new HashMap();
+		
+		System.out.println(++counter);
+		
+		if(n==0)
+			return 0;
+		else if(n==1)
+			return 1;
+		
+		if(map.get(n)!=null)
+			return map.get(n);
+		else {
+			int value = fib(n-1)+fib(n-2);
+			map.put(null, value);
+			return value;
+		}
+			
+	}
+	
+	
+	public boolean isAnagram(String s1, String s2) {
+		
+		
+		if(s1.length()!=s2.length())
+			return false;
+		
+		s1 = sortString(s1);
+		s2 = sortString(s2);
+		
+		return s1.contentEquals(s2);
+		
+		
+		
+	}
+	
+	public String sortString(String s) {
+		char[] c = s.toCharArray();
+		int n = c.length;
+		
+		for(int i=0;i<n-1;i++) {
+			for(int j =i+1;j<n;j++) {
+				if(c[i]>c[j]) {
+					char temp = c[i];
+					c[i] = c[j];
+					c[j] = temp;
+				}
+			}
+		}
+		return new String(c);
+	}
+	
+	public String sortSentence(String s) {
+		
+		String[] arr = s.split(" ");
+		
+		int n = arr.length;
+		
+		for(int i=0;i<n-1;i++) {
+			for(int j =i+1;j<n;j++) {
+				if(arr[i].length()>arr[j].length()) {
+					String temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for(String value:arr) {
+			sb.append(value+" ");
+		}
+		
+		String out = new String(sb);
+		out = out.trim();
+		return out;
+		
+	}
+	
+	
 }
 
 
