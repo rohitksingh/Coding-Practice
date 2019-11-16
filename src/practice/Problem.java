@@ -16,14 +16,14 @@ public class Problem {
 		Problem p1 = new Problem();
 //		p1.sortNumber(new int[] {2,4,1,-5,3,77,98});
 //		p1.sortChar("rohitsingh");
-		char[] arr = "Rohit".toCharArray();
-		p1.reverseRecursive(arr);
+//		char[] arr = "Rohit".toCharArray();
+//		p1.reverseRecursive(arr);
+//		p1.reverse("rohit");
+		p1.iterateBack("RohitSingh");
 		
 	}
 	
-	
-	
-	
+
 	public void sortNumber(int[] a) {
 		
 		int n = a.length;
@@ -108,6 +108,30 @@ public class Problem {
 		arr[high] = temp;
 	
 		swap(arr, ++low, --high);
+	}
+	
+	public void reverse(String s) {
+		
+		char[] c = s.toCharArray();
+		int n = c.length;
+		int mid = n/2;
+		for(int i=0;i<mid;i++) {
+			char temp = c[n-1-i];
+			c[n-1-i] = c[i];
+			c[i] = temp;
+		}
+		
+		System.out.println(new String(c));
+	}
+	
+	public void iterateBack(String s) {
+		char[] c = s.toCharArray();
+		int n = c.length;
+		
+		for(int i=0;i<n;i++) {
+			System.out.print(c[n-1-i]);
+		}
+		
 	}
 	
 	
